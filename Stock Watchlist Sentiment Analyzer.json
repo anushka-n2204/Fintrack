@@ -1,0 +1,377 @@
+{
+  "name": "Stock Watchlist Sentiment Analyzer",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "watchlist",
+              "type": "array",
+              "value": "=[\n  { \"ticker\": \"RELIANCE.NS\", \"companyName\": \"Reliance Industries\", \"category\": \"Stock\", \"sector\": \"Conglomerate\" },\n  { \"ticker\": \"TCS.NS\", \"companyName\": \"Tata Consultancy Services\", \"category\": \"Stock\", \"sector\": \"IT\" },\n  { \"ticker\": \"INFY.NS\", \"companyName\": \"Infosys\", \"category\": \"Stock\", \"sector\": \"IT\" },\n  { \"ticker\": \"WIPRO.NS\", \"companyName\": \"Wipro\", \"category\": \"Stock\", \"sector\": \"IT\" },\n  { \"ticker\": \"HCLTECH.NS\", \"companyName\": \"HCL Technologies\", \"category\": \"Stock\", \"sector\": \"IT\" },\n  { \"ticker\": \"TECHM.NS\", \"companyName\": \"Tech Mahindra\", \"category\": \"Stock\", \"sector\": \"IT\" },\n  { \"ticker\": \"HDFCBANK.NS\", \"companyName\": \"HDFC Bank\", \"category\": \"Stock\", \"sector\": \"Banking\" },\n  { \"ticker\": \"ICICIBANK.NS\", \"companyName\": \"ICICI Bank\", \"category\": \"Stock\", \"sector\": \"Banking\" },\n  { \"ticker\": \"SBIN.NS\", \"companyName\": \"State Bank of India\", \"category\": \"Stock\", \"sector\": \"Banking\" },\n  { \"ticker\": \"KOTAKBANK.NS\", \"companyName\": \"Kotak Mahindra Bank\", \"category\": \"Stock\", \"sector\": \"Banking\" },\n  { \"ticker\": \"AXISBANK.NS\", \"companyName\": \"Axis Bank\", \"category\": \"Stock\", \"sector\": \"Banking\" },\n  { \"ticker\": \"BAJFINANCE.NS\", \"companyName\": \"Bajaj Finance\", \"category\": \"Stock\", \"sector\": \"NBFC\" },\n  { \"ticker\": \"BHARTIARTL.NS\", \"companyName\": \"Bharti Airtel\", \"category\": \"Stock\", \"sector\": \"Telecom\" },\n  { \"ticker\": \"HINDUNILVR.NS\", \"companyName\": \"Hindustan Unilever\", \"category\": \"Stock\", \"sector\": \"FMCG\" },\n  { \"ticker\": \"ITC.NS\", \"companyName\": \"ITC Limited\", \"category\": \"Stock\", \"sector\": \"FMCG\" },\n  { \"ticker\": \"NESTLEIND.NS\", \"companyName\": \"Nestle India\", \"category\": \"Stock\", \"sector\": \"FMCG\" },\n  { \"ticker\": \"MARUTI.NS\", \"companyName\": \"Maruti Suzuki\", \"category\": \"Stock\", \"sector\": \"Auto\" },\n  { \"ticker\": \"TATAMOTORS.NS\", \"companyName\": \"Tata Motors\", \"category\": \"Stock\", \"sector\": \"Auto\" },\n  { \"ticker\": \"BAJAJ-AUTO.NS\", \"companyName\": \"Bajaj Auto\", \"category\": \"Stock\", \"sector\": \"Auto\" },\n  { \"ticker\": \"SUNPHARMA.NS\", \"companyName\": \"Sun Pharmaceutical\", \"category\": \"Stock\", \"sector\": \"Pharma\" },\n  { \"ticker\": \"DRREDDY.NS\", \"companyName\": \"Dr Reddy Laboratories\", \"category\": \"Stock\", \"sector\": \"Pharma\" },\n  { \"ticker\": \"CIPLA.NS\", \"companyName\": \"Cipla\", \"category\": \"Stock\", \"sector\": \"Pharma\" },\n  { \"ticker\": \"ADANIENT.NS\", \"companyName\": \"Adani Enterprises\", \"category\": \"Stock\", \"sector\": \"Conglomerate\" },\n  { \"ticker\": \"ADANIPORTS.NS\", \"companyName\": \"Adani Ports\", \"category\": \"Stock\", \"sector\": \"Infrastructure\" },\n  { \"ticker\": \"POWERGRID.NS\", \"companyName\": \"Power Grid Corporation\", \"category\": \"Stock\", \"sector\": \"Energy\" },\n  { \"ticker\": \"NTPC.NS\", \"companyName\": \"NTPC Limited\", \"category\": \"Stock\", \"sector\": \"Energy\" },\n  { \"ticker\": \"ONGC.NS\", \"companyName\": \"ONGC\", \"category\": \"Stock\", \"sector\": \"Energy\" },\n  { \"ticker\": \"TATASTEEL.NS\", \"companyName\": \"Tata Steel\", \"category\": \"Stock\", \"sector\": \"Metals\" },\n  { \"ticker\": \"JSWSTEEL.NS\", \"companyName\": \"JSW Steel\", \"category\": \"Stock\", \"sector\": \"Metals\" },\n  { \"ticker\": \"LT.NS\", \"companyName\": \"Larsen and Toubro\", \"category\": \"Stock\", \"sector\": \"Infrastructure\" },\n  { \"ticker\": \"NIFTY50\", \"companyName\": \"Nifty 50 Index\", \"category\": \"Index\", \"sector\": \"Broad Market\" },\n  { \"ticker\": \"SENSEX\", \"companyName\": \"BSE Sensex\", \"category\": \"Index\", \"sector\": \"Broad Market\" },\n  { \"ticker\": \"NIFTYBANK\", \"companyName\": \"Nifty Bank Index\", \"category\": \"Index\", \"sector\": \"Banking\" },\n  { \"ticker\": \"NIFTYIT\", \"companyName\": \"Nifty IT Index\", \"category\": \"Index\", \"sector\": \"IT\" },\n  { \"ticker\": \"NIFTYMIDCAP\", \"companyName\": \"Nifty Midcap 100\", \"category\": \"Index\", \"sector\": \"Mid Cap\" },\n  { \"ticker\": \"PPFAS\", \"companyName\": \"Parag Parikh Flexi Cap Fund\", \"category\": \"Mutual Fund\", \"sector\": \"Flexi Cap\" },\n  { \"ticker\": \"MIRAE\", \"companyName\": \"Mirae Asset Large Cap Fund\", \"category\": \"Mutual Fund\", \"sector\": \"Large Cap\" },\n  { \"ticker\": \"AXISNIFTY\", \"companyName\": \"Axis Nifty 50 Index Fund\", \"category\": \"Mutual Fund\", \"sector\": \"Index Fund\" },\n  { \"ticker\": \"HDFCMID\", \"companyName\": \"HDFC Midcap Opportunities Fund\", \"category\": \"Mutual Fund\", \"sector\": \"Mid Cap\" },\n  { \"ticker\": \"SBISMALL\", \"companyName\": \"SBI Small Cap Fund\", \"category\": \"Mutual Fund\", \"sector\": \"Small Cap\" },\n  { \"ticker\": \"MIRAETAX\", \"companyName\": \"Mirae Asset ELSS Tax Saver Fund\", \"category\": \"Mutual Fund\", \"sector\": \"ELSS\" },\n  { \"ticker\": \"GOLD\", \"companyName\": \"Gold price India\", \"category\": \"Commodity\", \"sector\": \"Precious Metal\" },\n  { \"ticker\": \"SILVER\", \"companyName\": \"Silver price India\", \"category\": \"Commodity\", \"sector\": \"Precious Metal\" },\n  { \"ticker\": \"CRUDEOIL\", \"companyName\": \"Crude Oil price\", \"category\": \"Commodity\", \"sector\": \"Energy\" },\n  { \"ticker\": \"BTC\", \"companyName\": \"Bitcoin\", \"category\": \"Crypto\", \"sector\": \"Crypto\" },\n  { \"ticker\": \"ETH\", \"companyName\": \"Ethereum\", \"category\": \"Crypto\", \"sector\": \"Crypto\" },\n  { \"ticker\": \"SBI_FD\", \"companyName\": \"SBI Fixed Deposit rates\", \"category\": \"FD\", \"sector\": \"Fixed Income\" },\n  { \"ticker\": \"HDFC_FD\", \"companyName\": \"HDFC Bank Fixed Deposit rates\", \"category\": \"FD\", \"sector\": \"Fixed Income\" },\n  { \"ticker\": \"RBIPOLICY\", \"companyName\": \"RBI Monetary Policy repo rate\", \"category\": \"Economy\", \"sector\": \"Macro\" },\n  { \"ticker\": \"USDINR\", \"companyName\": \"USD INR exchange rate\", \"category\": \"Economy\", \"sector\": \"Forex\" },\n  { \"ticker\": \"INFLATION\", \"companyName\": \"India inflation CPI\", \"category\": \"Economy\", \"sector\": \"Macro\" }\n]"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "f7dbe882-7821-4954-b2f2-a2f48b550cc0",
+      "name": "Define Watchlist",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        128,
+        -144
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.first().json.watchlist.map(stock => ({ json: stock }));"
+      },
+      "id": "0f406f2e-3c72-489b-9677-568e81b43934",
+      "name": "Split Watchlist",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "=GET",
+        "url": "=https://newsapi.org/v2/everything?q={{ encodeURIComponent($json.companyName + \" stock\") }}&language=en&sortBy=publishedAt&pageSize=5&apiKey=007cfd6638504480a056d715a6251f28",
+        "options": {}
+      },
+      "id": "5c769f0c-adb0-42f0-b2ad-35dcd266b737",
+      "name": "Fetch News Headlines",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        656,
+        352
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "ticker",
+              "type": "string",
+              "value": "={{ $$(\"Split Watchlist\").item.json.ticker }}"
+            },
+            {
+              "id": "2",
+              "name": "companyName",
+              "type": "string",
+              "value": "={{ $$(\"Split Watchlist\").item.json.companyName }}"
+            },
+            {
+              "id": "3",
+              "name": "headlines",
+              "type": "array",
+              "value": "={{ $json.articles.slice(0, 10) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "989a2450-4168-497d-9c01-dc10a866f7fe",
+      "name": "Format Headlines",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1024,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "userPrompt",
+              "type": "string",
+              "value": "=Stock: {{ $json.companyName }} ({{ $json.ticker }})\n\nHeadlines:\n{{ $json.headlines.map((h, i) => `${i+1}. ${h.title}`).join(\"\\n\") }}\n\nAnalyze sentiment and respond in the specified format only."
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "7119cfea-a2a0-4647-8c00-bd86286f0266",
+      "name": "Build Analysis Prompt",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        688
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://openrouter.ai/api/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({\n  model: \"meta-llama/llama-3.1-8b-instruct\",\n  messages: [\n    {\n      role: \"system\",\n      content: \"You are a concise financial news analyst helping a retail investor in India track daily news sentiment for their stock watchlist. You are not a financial advisor — never give buy/sell recommendations or price targets.\\n\\nGiven headlines for one stock, respond ONLY in this exact format, nothing else:\\n\\nSENTIMENT: [Positive/Negative/Neutral/Mixed]\\nSUMMARY: [Max 2 sentences, plain language, no jargon]\\nKEY_EVENT: [Short phrase for major catalysts like earnings, regulatory news, M&A, leadership change — or 'None']\\n\\nRules:\\n- Be factual and neutral, never sensational or speculative.\\n- If headlines are old, irrelevant, or low-quality, say 'No significant recent news' as the summary.\\n- Never invent facts, numbers, or events not present in the headlines.\\n- Never give investment advice.\\n- Total output must be under 50 words.\"\n    },\n    {\n      role: \"user\",\n      content: \"Stock: \" + $json.companyName + \" (\" + $json.ticker + \")\\n\\nHeadlines:\\n\" + $json.headlines.map((h, i) => (i+1) + \". \" + h.title).join(\"\\n\") + \"\\n\\nAnalyze sentiment and respond in the specified format only.\"\n    }\n  ],\n  max_tokens: 150,\n  temperature: 0.3\n}) }}",
+        "options": {}
+      },
+      "id": "89b0e738-f5c7-48de-80dd-25f82af886e6",
+      "name": "Analyze Sentiment (OpenRouter)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1680,
+        560
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "NaU32D6SAqVlCZxS",
+          "name": "Header Auth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1",
+              "name": "ticker",
+              "type": "string",
+              "value": "={{ $(\"Split Watchlist\").item.json.ticker }}"
+            },
+            {
+              "id": "2",
+              "name": "companyName",
+              "type": "string",
+              "value": "={{ $(\"Split Watchlist\").item.json.companyName }}"
+            },
+            {
+              "id": "3",
+              "name": "analysis",
+              "type": "string",
+              "value": "={{ $json.choices[0].message.content }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "861465e4-4305-4aae-9c9e-87f8e1c57b99",
+      "name": "Extract Analysis",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1984,
+        368
+      ]
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        2240,
+        112
+      ],
+      "id": "9d1e2065-f629-4cc3-8a2c-a2ef0b7ca13a",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "jsCode": "const emoji = { \n  Positive: '🟢', \n  Negative: '🔴', \n  Neutral: '⚪', \n  Mixed: '🟡' \n};\n\nconst categoryEmoji = {\n  'Stock': '📈',\n  'Index': '📊',\n  'Mutual Fund': '💼',\n  'Commodity': '🥇',\n  'FD': '🏦',\n  'Crypto': '₿',\n  'Economy': '🏛️'\n};\n\nconst results = $json.data;\nconst date = new Date().toLocaleDateString('en-IN', { \n  day: 'numeric', month: 'short', year: 'numeric' \n});\n\n// Helper to format one stock entry\nfunction formatItem(r) {\n  const sentimentMatch = r.analysis ? r.analysis.match(/SENTIMENT:\\s*(\\w+)/) : null;\n  const summaryMatch = r.analysis ? r.analysis.match(/SUMMARY:\\s*(.+?)(?:\\n|KEY_EVENT|$)/s) : null;\n  const keyEventMatch = r.analysis ? r.analysis.match(/KEY_EVENT:\\s*(.+)/) : null;\n\n  const sentiment = sentimentMatch ? sentimentMatch[1].trim() : 'Neutral';\n  const summary = summaryMatch ? summaryMatch[1].trim() : 'No significant recent news.';\n  const keyEvent = keyEventMatch ? keyEventMatch[1].trim() : 'None';\n\n  const e = emoji[sentiment] || '⚪';\n  let text = `${e} *${r.companyName}*\\n${summary}\\n`;\n  if (keyEvent && keyEvent !== 'None') {\n    text += `📌 _${keyEvent}_\\n`;\n  }\n  return text;\n}\n\n// Split array into chunks of n\nfunction chunkArray(arr, n) {\n  const chunks = [];\n  for (let i = 0; i < arr.length; i += n) {\n    chunks.push(arr.slice(i, i + n));\n  }\n  return chunks;\n}\n\n// Group by category\nconst grouped = {};\nfor (const r of results) {\n  const cat = r.category || 'Other';\n  if (!grouped[cat]) grouped[cat] = [];\n  grouped[cat].push(r);\n}\n\nconst messages = [];\n\n// Header\nmessages.push({\n  message: `🗞 *Daily Investment Digest*\\n📅 ${date}\\n━━━━━━━━━━━━━━━━━━━━\\nYour complete market overview 👇`\n});\n\nfor (const [category, items] of Object.entries(grouped)) {\n  const chunks = chunkArray(items, 8);\n  \n  chunks.forEach((chunk, index) => {\n    const partLabel = chunks.length > 1 ? ` (Part ${index + 1}/${chunks.length})` : '';\n    let msg = `${categoryEmoji[category] || '📌'} *${category.toUpperCase()}${partLabel}*\\n`;\n    msg += `━━━━━━━━━━━━━━━━━━━━\\n\\n`;\n    \n    for (const r of chunk) {\n      msg += formatItem(r);\n      msg += '\\n';\n    }\n    \n    messages.push({ message: msg });\n  });\n}\n\n// Footer\nmessages.push({\n  message: `━━━━━━━━━━━━━━━━━━━━\\n_Powered by your n8n Stock Bot_ 🤖\\n_Data: NewsAPI & OpenRouter_`\n});\n\nreturn messages.map(m => ({ json: m }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2448,
+        -80
+      ],
+      "id": "7b359801-c726-4b51-999a-026c615ba9b4",
+      "name": "Format Digest"
+    },
+    {
+      "parameters": {
+        "chatId": "6479850316",
+        "text": "={{ $json.message }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2656,
+        -320
+      ],
+      "id": "4d6ec2e9-5f70-4f8a-8f78-ba2885406634",
+      "name": "Send a text message",
+      "webhookId": "a1032cb6-09e0-4144-9a0f-963eb081a721",
+      "credentials": {
+        "telegramApi": {
+          "id": "e95geouKmwm64M0u",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 8,
+              "triggerAtMinute": 30
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -80,
+        -384
+      ],
+      "id": "3f1c211d-a2b0-4b5d-b308-63313a8a2932",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Define Watchlist": {
+      "main": [
+        [
+          {
+            "node": "Split Watchlist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Watchlist": {
+      "main": [
+        [
+          {
+            "node": "Fetch News Headlines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch News Headlines": {
+      "main": [
+        [
+          {
+            "node": "Format Headlines",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Headlines": {
+      "main": [
+        [
+          {
+            "node": "Build Analysis Prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Analysis Prompt": {
+      "main": [
+        [
+          {
+            "node": "Analyze Sentiment (OpenRouter)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Sentiment (OpenRouter)": {
+      "main": [
+        [
+          {
+            "node": "Extract Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Analysis": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Format Digest",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Digest": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Define Watchlist",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1
+  },
+  "versionId": "f4bc7504-ca9b-4f0a-b401-460bd004fe32",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "bee4fb1249d79a7a3e7f594d44cf9ffeec3303517cef8f94b7267c5b11630601"
+  },
+  "nodeGroups": [],
+  "id": "CRqQKJCqCrz120X4",
+  "tags": []
+}
